@@ -1,0 +1,49 @@
+PELUCITAS - PANEL DE ADMINISTRADOR
+====================================
+
+Añade una pestaña Admin privada a la aplicación existente de PeluCitas.
+Permite ver citas de todos los clientes y cancelar reservas futuras.
+El panel muestra nombre, teléfono, servicio, día y hora de cada cita.
+No incluye modificación de horarios, envío de notificaciones ni lista completa de emails registrados.
+
+1. HAZ UNA COPIA DEL App.tsx ACTUAL
+
+2. SUPABASE:
+Abre tu proyecto > SQL Editor > New query.
+Copia TODO panel_administrador.sql y ejecuta RUN.
+El SQL es ADITIVO y no borra las citas de la tabla appointments.
+
+3. DAR PERMISO A UN ADMINISTRADOR:
+Inicia sesión en PeluCitas con la cuenta que utilizará el peluquero.
+Ve a Supabase > Authentication > Users y copia el User UID de esa cuenta.
+En SQL Editor ejecuta (cambia la cadena por el UID de verdad):
+
+insert into public.admin_users (user_id)
+values ('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
+on conflict (user_id) do nothing;
+
+Usa el UID exacto, NO un correo, y NO compartas tu clave secreta.
+
+4. CÓDIGO:
+Reemplaza SOLO App.tsx en el proyecto de Expo por el de este ZIP.
+NO reemplaces .env, lib/supabase.ts, ni tu base de datos anterior.
+
+5. PROBAR:
+En la carpeta que tenga package.json, ejecuta:
+  npx expo start --clear
+Cierra e inicia sesión con la cuenta del peluquero si ya estabas conectado.
+Deberían verse 3 pestañas: Reservar, Mis citas, Admin.
+Con un usuario cliente normal solo aparecen Reservar y Mis citas.
+Haz una prueba con 2 cuentas distintas antes de entregar la APK.
+
+6. NUEVA APK:
+Después de probar, vuelve a compilar:
+  eas build --platform android --profile preview
+La APK YA instalada no cambia automáticamente al modificar App.tsx.
+
+SEGURIDAD:
+Las políticas Row Level Security (RLS) se aplican en la base de datos,
+no solamente en la interfaz. El rol admin_users no se puede dar desde la app.
+
+NOTA: El panel muestra un máximo de 300 citas por consulta; puedes alternar
+entre citas desde hoy y el historial (últimas citas).

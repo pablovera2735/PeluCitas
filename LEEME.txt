@@ -1,0 +1,18 @@
+PELuCITAS - CALENDARIO CON BASE DE DATOS SUPABASE
+
+1. Supabase (https://supabase.com/dashboard): crear proyecto.
+2. Ir a SQL Editor > New query y ejecutar TODO el archivo supabase.sql una sola vez.
+3. Authentication > Providers > Email: comprobar que está habilitado. Si está activada la confirmación por email, hay que confirmar la dirección tras registrarse.
+4. Del panel Supabase > Connect o Project Settings > API Keys, copiar URL y clave PUBLICABLE (nunca secret ni service_role).
+5. En Windows, abrir tu proyecto Expo en C:\Users\pablo\Downloads\PeluCitas-Kit\PeluCitas-Kit\PeluCitas
+6. Reemplazar App.tsx por el App.tsx de este ZIP.
+7. Crear la carpeta lib (si no existe) y poner en ella el archivo lib/supabase.ts de este ZIP.
+8. Copiar .env.example a la raíz del proyecto y renombrarlo como .env; sustituir los valores de ejemplo.
+9. En CMD y dentro del proyecto:
+   npx expo install @supabase/supabase-js @react-native-async-storage/async-storage react-native-url-polyfill
+   npx expo start --clear
+10. Desde Expo Go: registrar cuenta, verificar email si lo exige Supabase, iniciar sesión, reservar cita y comprobar en Supabase > Table Editor > appointments.
+
+Incluye inicio de sesión, calendario mensual, horarios, reservas, Mis citas y cancelación.
+Una única agenda y una hora por servicio, lunes a sábado. Para uso comercial real faltan gestión del negocio, RGPD, límites antiabuso y otros controles.
+Nunca incluyas claves secretas en código ni compartas .env con otras personas.
