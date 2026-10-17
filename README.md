@@ -101,7 +101,7 @@ El archivo `.env` no debe publicarse en GitHub.
 Desarrollador de aplicaciones web y móviles.
 
 - GitHub: https://github.com/pablovera2735
-- Portfolio: https://pablovera.netlify.app
+- Portfolio: https://pabloveragarciadev.netlify.app
 
 ---
 
